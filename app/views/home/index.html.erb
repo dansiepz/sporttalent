@@ -1,4 +1,11 @@
-<h3>Home</h3>
-<% @users.each do |user| %>
-  <p>User: <%=link_to user.name, user %></p>
+<% if user_signed_in? %>
+  <div class="row">
+    <div class="col-md-12">
+      <% if current_user.user_profile.nil? %>
+      <div class="alert alert-warning">
+        <%= link_to 'Create your user profile', new_user_profile_path, :class => 'alert-link btn btn-warning' %>
+      </div>
+      <% end %>
+    </div>
+  </div>
 <% end %>
